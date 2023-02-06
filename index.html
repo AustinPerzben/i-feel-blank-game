@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="p5.js"></script>
+  <script src="p5.sound.min.js"></script>
+  <script src="player.js"></script>
+  <script src="sketch.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <meta charset="utf-8" />
+</head>
+
+<body>
+  <header>
+    <h1>
+      "I Feel <em>Blank</em>"- A Game about Emotional Awareness in the
+      Decision-Making Process
+    </h1>
+  </header>
+  <main>
+    <div class="grid-container1">
+      <div id="board" class="grid-child"></div>
+      <div class="grid-child">
+        <h2>About this Site</h2>
+        <p>
+          This site is a prototype of the game "I Feel <em>Blank</em>", which was
+          created as part of a Final project for SS142 coursework at Minerve University.
+          This website is meant to serve as a digital gameboard and guide for anyone to
+          play "I Feel <em>Blank</em>" with a friend. The game runs locally, so players
+          are meant to take turns on the same computer, as if sharing a physical gameboard.
+        </p>
+        <h2>Controls</h2>
+        <p>
+          During the Setup Phase, <strong>Click</strong> on each Token to
+          select them and move each Player to their chosen starting position.
+        </p>
+        <p>
+          Use the <strong>Arrow Keys</strong> to Move and
+          <strong>Shift/Ctrl</strong> and Rotate clockwise/counterclockwise,
+          respectively. If you make a mistake on your Turn,
+          <strong>Backspace</strong> will undo your last move.
+        </p>
+        <p>
+          Once ready, press <strong>Enter</strong> to move on to the next
+          Phase of the game, and press <strong>R</strong> to restart the game.
+        </p>
+        <p>
+          You may always <strong>Hover</strong> over a Token to see its
+          current position.
+        </p>
+      </div>
+    </div>
+    <br>
+    <div class="grid-container2">
+      <div id="instructions" class="grid-child">
+        <h2>Full Game Ruleset</h2>
+        <ul>
+          <li>EMOTION MAPS:</li>
+          <ul>
+            <li>
+              Each Player assigns an emotion to each of their Token's 8 possible
+              positions on the game board; this constitutes their Emotion Map
+            </li>
+            <li>
+              There are 8 board positions, one for each orientation-and-color
+              configuration a Player's Token can take on the game board
+            </li>
+            <ul>
+              <li>
+                Blue-North
+                <span style="color: #3c78d8;"><strong>⇧</strong></span>, Blue-South
+                <span style="color: #3c78d8;"><strong>⇩</strong></span>, Blue-East
+                <span style="color: #3c78d8;"><strong>⇨</strong></span>, Blue-West
+                <span style="color: #3c78d8;"><strong>⇦</strong></span>
+              </li>
+              <li>
+                Green-North
+                <span style="color: #6aa84f;"><strong>⇧</strong></span>, Green-South
+                <span style="color: #6aa84f;"><strong>⇩</strong></span>, Green-East
+                <span style="color: #6aa84f;"><strong>⇨</strong></span>, Green-West
+                <span style="color: #6aa84f;"><strong>⇦</strong></span>
+              </li>
+            </ul>
+          </ul>
+          <br />
+          <li>OBJECTIVE:</li>
+          <ul>
+            <li>
+              Win by correctly guessing your opponent's complete Emotion Map
+            </li>
+          </ul>
+          <br />
+          <li>PROMPTS:</li>
+          <ul>
+            <li>
+              During gameplay, Prompts provide cues and/or context for Players'
+              emotional Responses
+            </li>
+            <li>
+              A list of example prompts is included, but you're encouraged to
+              come up with your own
+            </li>
+          </ul>
+          <br />
+          <li>RESPONSES TO PROMPTS:</li>
+          <ul>
+            <li>
+              When a Prompt is presented, one or both Players may have to
+              Respond to it by providing a short (1-2 sentences) description of
+              their reaction to the Prompt, based on the Emotion assigned to the
+              Player's position in their Emotion Map
+            </li>
+            <li>
+              Responses can be Sincere (based on the emotion mapped to the
+              Player's current position on their Emotion map) or Deceptive
+              (based on any emotion <em>not</em> mapped to the Player's current
+              position on their Emotion Map)
+            </li>
+          </ul>
+          <br />
+          <li>SETUP:</li>
+
+          <ol>
+            <li>Choose tokens</li>
+            <li>
+              Fill out Emotion Maps by assigning emotions to board positions
+            </li>
+            <li>Choose starting positions</li>
+            <li>
+              Share the 8 emotions each Player has chosen, but not their
+              assigned positions
+            </li>
+            <li>Flip a coin to decide who starts</li>
+          </ol>
+          <br />
+          <li>PLAYING THE GAME:</li>
+          <ul>
+            <li>
+              Every Round consists of a Turn for each Player and one Insight
+              Phase
+            </li>
+            <li>A Player Turn consists of</li>
+
+            <ol>
+              <li>
+                A Move, where the Player chooses to either Jump to an adjacent
+                square or Rotate 90&deg; clockwise/counterclockwise, but not
+                both
+              </li>
+              <li>
+                A Scenario, the format of which depends on the state of the
+                board after the Player's Move:
+              </li>
+              <ol>
+                <li>
+                  If neither of the Players faces the other, the Turn ends
+                </li>
+                <li>
+                  If both Players face each other, then a Prompt is chosen at
+                  Random and both Players must Respond to it Sincerely
+                </li>
+                <li>
+                  If one Player (e.g. Green) faces the side of the other (Blue),
+                  then that Player (Green) chooses a Prompt that the other
+                  (Blue) must Respond to Sincerely
+                </li>
+                <li>
+                  If one Player (e.g. Green) faces the back of the other (Blue),
+                  then that Player (Green) chooses a Prompt that the other
+                  (Blue) must Respond to Deceptively
+                </li>
+              </ol>
+            </ol>
+            <li>
+              During the Insight Phase, which happens at the end of a Round,
+              after each Player completed their Turn, both Players have the
+              opportunity to Guess the position of one emotion in their
+              opponent's Emotion Map and get a truthful Yes/No answer (one or
+              both may choose not to guess).
+            </li>
+          </ul>
+          <br />
+          <li>RESTRICTIONS:</li>
+          <ul>
+            <li>
+              You must Move on your turn, you cannot remain in the same position
+            </li>
+            <li>
+              You cannot take consecutive opposite Moves to "undo" a Turn; you
+              can't Jump or Rotate in one direction and then back on your next
+              Turn
+            </li>
+          </ul>
+        </ul>
+      </div>
+      <div class="grid-child">
+        <h2>Example Prompts</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <ul>
+                  <li>A foggy summer day</li>
+                  <li>A promise</li>
+                  <li>A boy who looks like a girl, or vice versa</li>
+                  <li>A mop</li>
+                  <li>Strange drawings on the windows of the school bus</li>
+                  <li>One single hair</li>
+                  <li>Dried beans</li>
+                  <li>Piles of leaves</li>
+                  <li>Running away from your responsibilities</li>
+                  <li>An empty box</li>
+                  <li>A whisper is heard in an empty room</li>
+                </ul>
+              </td>
+              <td>
+                <ul>
+                  <li>Leftover pizza</li>
+                  <li>Footsteps in the dirt</li>
+                  <li>The number 42</li>
+                  <li>An interplanetary stock-market</li>
+                  <li>Halloween night</li>
+                  <li>A human foot washes up on shore</li>
+                  <li>A jewel‐encrusted ring is found in an ancient temple</li>
+                  <li>Inheritance tax</li>
+                  <li>Failing to replicate your grandmother&rsquo;s recipes</li>
+                  <li>A Christmas party with a secret motive</li>
+                  <li>A pet cemetery</li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>Created by <a href="mailto:aguspdc@uni.minerva.edu">Agustin Perez del Castillo</a></p>
+  </footer>
+</body>
+
+</html>
